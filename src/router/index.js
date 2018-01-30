@@ -2,35 +2,51 @@ import Vue from 'vue'
 
 import Router from 'vue-router'
 
-import Home from '@/components/home'
+// import Home from '@/components/home'
+// const Foo = () => import('./Foo.vue')
+const Home = ()  => import ('@/components/home');
 
-import PictureTable from '@/components/test/PictureTable'
+// import PictureTable from '@/components/test/PictureTable'
+const PictureTable = ()  => import ('@/components/test/PictureTable');
 import CookieTest from '@/components/test/CookieTest'
 import StoreTest from '@/components/test/StoreTest'
 import LogIn from '@/components/LogIn'
 import App from '@/App'
-import NotFound from '@/components/NotFound'
-import LayoutTest from '@/components/test/LayoutTest'
-import TerminalController from '@/components/page/TerminalController'
+// import NotFound from '@/components/NotFound'
+const NotFound = ()  => import ('@/components/NotFound');
+// import LayoutTest from '@/components/test/LayoutTest'
+const LayoutTest = ()  => import ('@/components/test/LayoutTest');
+// import TerminalController from '@/components/page/TerminalController'
+const TerminalController = ()  => import ('@/components/page/TerminalController');
 
 // 正式版
-import RuntimeStatus from '@/components/page/RuntimeStatus'
-import OperatorLog from '@/components/page/OperatorLog'
+// import RuntimeStatus from '@/components/page/RuntimeStatus'
+const RuntimeStatus = ()  => import ('@/components/page/RuntimeStatus');
+// import OperatorLog from '@/components/page/OperatorLog'
+const OperatorLog = ()  => import ('@/components/page/OperatorLog');
 // sensor
-import SensorOne from '@/components/page/SensorOne'
+// import SensorOne from '@/components/page/SensorOne'
+const SensorOne = ()  => import ('@/components/page/SensorOne');
 // user manger
-import UserEdit from '@/components/page/UserEdit'
+// import UserEdit from '@/components/page/UserEdit'
+const UserEdit = ()  => import ('@/components/page/UserEdit');
 
 // Org page
 import Org from '@/Org'
 import MainOrg from '@/components/MainOrg'
-import MonitorPage from '@/components/page/MonitorPage'
 
-import NodeOne from '@/components/page/NodeOne'
-import NodeTwo from '@/components/page/NodeTwo'
-import NodeThree from '@/components/page/NodeThree'
+// import MonitorPage from '@/components/page/MonitorPage'
+const MonitorPage = ()  => import ('@/components/page/MonitorPage');
 
-import UploadFile from '@/components/test/UploadFile'
+// import NodeOne from '@/components/page/NodeOne'
+const NodeOne = ()  => import ('@/components/page/NodeOne');
+// import NodeTwo from '@/components/page/NodeTwo'
+const NodeTwo = ()  => import ('@/components/page/NodeTwo');
+// import NodeThree from '@/components/page/NodeThree'
+const NodeThree = ()  => import ('@/components/page/NodeThree');
+
+// import UploadFile from '@/components/test/UploadFile'
+const UploadFile = ()  => import ('@/components/test/UploadFile');
 
 
 Vue.use(Router);

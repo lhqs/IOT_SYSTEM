@@ -3,7 +3,7 @@
     <!--面包屑-->
     <div id="breadhead" style="aligin:right;">
       <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/sensorOne' }">传感节点</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/nodeOne' }">传感节点</el-breadcrumb-item>
         <el-breadcrumb-item>传感节点一</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -168,9 +168,6 @@
       <el-col :span="24">
         <div id="chartLine" style="width:100%; height:400px;"></div>
       </el-col>
-      <!--<el-col :span="12">
-        <div id="chartLine1" style="width:100%; height:400px;"></div>
-      </el-col>-->
     </el-row>
   </div>
 </template>
@@ -232,12 +229,6 @@
     watch: {
       ground: function () {
         this.drawLastLineChart("lastChartPic");
-
-        this.drawDynamicHumidity("lineHumidity");
-        this.drawDynamicGround("lineGround");
-        this.drawDynamicTemperature("lineTemperature");
-        this.drawDynamicPh("linePh");
-
         this.drawGaugeHumidity("gaugeHumidity");
         this.drawGaugeGround("gaugeGround");
         this.drawGaugeTemperature("gaugeTemperature");
@@ -349,6 +340,7 @@
       },
       updateData() {
         this.getRealData();
+        this.drawLastLineChart("lastChartPic");
       },
       getRealData() {
         let params = {num: 1};
@@ -389,7 +381,7 @@
         setInterval(function () {
           option.series[0].data[0].value = _this.humidity;
           temperatureChart.setOption(option, true);
-        }, 4000);
+        }, 1000);
       },
       drawGaugeGround(gaugeParms) {
         let _this = this;
@@ -412,7 +404,7 @@
         setInterval(function () {
           option.series[0].data[0].value = _this.ground;
           humityChart.setOption(option, true);
-        }, 5000);
+        }, 1000);
       },
       drawGaugeTemperature(gaugeParms) {
         let _this = this;
@@ -435,7 +427,7 @@
         setInterval(function () {
           option.series[0].data[0].value = _this.temperature;
           humityChart.setOption(option, true);
-        }, 6000);
+        }, 1000);
       },
       drawGaugePh(gaugeParms) {
         let _this = this;
@@ -458,7 +450,7 @@
         setInterval(function () {
           option.series[0].data[0].value = _this.ph;
           humityChart.setOption(option, true);
-        }, 7000);
+        }, 1000);
       },
 
       drawDynamicHumidity(id) {
@@ -540,7 +532,6 @@
                 var res = [];
                 var len = 0;
                 while (len < 80) {
-                  // res.push((Math.random()*10 + 4).toFixed(1) - 0);
                   res.push(1.0);
                   len++;
                 }
@@ -955,6 +946,15 @@
       })
     },
     updated: function () {
+    },
+    created:function () {
+      setTimeout( () => {
+        this.drawDynamicHumidity("lineHumidity");
+        this.drawDynamicGround("lineGround");
+        this.drawDynamicTemperature("lineTemperature");
+        this.drawDynamicPh("linePh");
+      },2000)
+
     }
 
   }

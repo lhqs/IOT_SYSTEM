@@ -3,7 +3,7 @@
 <el-row class="tac">
   <el-col>
     <h4><strong>
-      <router-link to="/home" tag="p">
+      <router-link to="/operatorLog" tag="p">
         <div id="theTitle">物联网系统管理平台</div>
       </router-link>
     </strong></h4>
@@ -13,7 +13,6 @@
       background-color="#333333"
       text-color="#fff"
       active-text-color="#16b183">
-
       <el-submenu index="10">
         <template slot="title">
           <i class="el-icon-loading"></i>
@@ -109,14 +108,6 @@
         sensor_three:"true"
       }
     },
-    /*watch: {
-      sendMsg: function () {
-        let str = this.sendMsg;
-        this.sensor_one = str[0] == 1 ? true : false;
-        this.sensor_two = str[1] == 1 ? true : false;
-        this.sensor_three = str[2] == 1 ? true : false;
-      }
-    },*/
     props:['sendMsg'],
     methods: {
       handleOpen(key, keyPath) {

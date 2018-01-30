@@ -3,7 +3,7 @@
     <!--面包屑-->
     <div id="breadhead" style="aligin:right;">
       <el-breadcrumb separator-class="el-icon-arrow-right">
-        <el-breadcrumb-item :to="{ path: '/sensorOne' }">传感节点</el-breadcrumb-item>
+        <el-breadcrumb-item :to="{ path: '/nodeThree' }">传感节点</el-breadcrumb-item>
         <el-breadcrumb-item>传感节点三</el-breadcrumb-item>
       </el-breadcrumb>
     </div>
@@ -211,11 +211,6 @@
     },
     watch: {
       ground: function () {
-        this.drawDynamicHumidity("lineHumidity");
-        this.drawDynamicGround("lineGround");
-        this.drawDynamicTemperature("lineTemperature");
-        this.drawDynamicPh("linePh");
-
         this.drawGaugeHumidity("gaugeHumidity");
         this.drawGaugeGround("gaugeGround");
         this.drawGaugeTemperature("gaugeTemperature");
@@ -310,6 +305,8 @@
       }},
       updateData() {
         this.getRealData();
+
+
       },
       getRealData() {
         let params = {num: 1};
@@ -350,7 +347,7 @@
         setInterval(function () {
           option.series[0].data[0].value = _this.humidity;
           temperatureChart.setOption(option, true);
-        }, 4000);
+        }, 1000);
       },
       drawGaugeGround(gaugeParms) {
         let _this = this;
@@ -373,7 +370,7 @@
         setInterval(function () {
           option.series[0].data[0].value = _this.ground;
           humityChart.setOption(option, true);
-        }, 5000);
+        }, 1000);
       },
       drawGaugeTemperature(gaugeParms) {
         let _this = this;
@@ -396,7 +393,7 @@
         setInterval(function () {
           option.series[0].data[0].value = _this.temperature;
           humityChart.setOption(option, true);
-        }, 6000);
+        }, 1000);
       },
       drawGaugePh(gaugeParms) {
         let _this = this;
@@ -419,7 +416,7 @@
         setInterval(function () {
           option.series[0].data[0].value = _this.ph;
           humityChart.setOption(option, true);
-        }, 7000);
+        }, 1000);
       },
 
       drawDynamicHumidity(id) {
@@ -818,16 +815,25 @@
     mounted() {
       this.getRealData();
 
+
+
       this.drawGaugeHumidity("gaugeHumidity");
       this.drawGaugeGround("gaugeGround");
       this.drawGaugeTemperature("gaugeTemperature");
       this.drawGaugePh("gaugePh");
 
+
       this.$nextTick(function () {
         setInterval(this.getRealData, 4000);
       })
     },
-    updated: function () {
+    created: function () {
+      setTimeout(()=>{
+        this.drawDynamicHumidity("lineHumidity");
+        this.drawDynamicGround("lineGround");
+        this.drawDynamicTemperature("lineTemperature");
+        this.drawDynamicPh("linePh");
+      },2000);
     }
 
   }

@@ -8,7 +8,7 @@
         </div>
         <div class="nav-agileinfo">
           <ul>
-            <li><router-link to="/home">初始页</router-link></li>
+            <li><router-link to="/operatorLog">初始页</router-link></li>
             <li><router-link to="/login">登录</router-link></li>
             <!--<li><a href="#">提交反馈</a></li>-->
             <!--<li><router-link to="">退出</router-link></li>-->
