@@ -39,6 +39,14 @@
             </router-link>
           </el-menu-item>
         </el-menu-item-group>
+        <el-menu-item-group>
+          <el-menu-item index="10-4">
+            <router-link to="/export" tag="li">
+              导出节点数据
+            </router-link>
+          </el-menu-item>
+        </el-menu-item-group>
+
       </el-submenu>
 
       <el-submenu index="1">

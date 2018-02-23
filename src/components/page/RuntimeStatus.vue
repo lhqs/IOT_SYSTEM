@@ -54,7 +54,7 @@
     name: "runtime-status",
     data() {
       return {
-        msg: '系统属性',
+        msg: '系统运行环境',
         index:'',
         /*datas:[{
           sysAttr: '',

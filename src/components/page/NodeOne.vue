@@ -228,11 +228,11 @@
     },
     watch: {
       ground: function () {
-        this.drawLastLineChart("lastChartPic");
-        this.drawGaugeHumidity("gaugeHumidity");
-        this.drawGaugeGround("gaugeGround");
-        this.drawGaugeTemperature("gaugeTemperature");
-        this.drawGaugePh("gaugePh");
+        // this.drawLastLineChart("lastChartPic");
+        // this.drawGaugeHumidity("gaugeHumidity");
+        // this.drawGaugeGround("gaugeGround");
+        // this.drawGaugeTemperature("gaugeTemperature");
+        // this.drawGaugePh("gaugePh");
       }
       /*chartDatas: function () {
         this.drawLastLineChart("lastChartPic");
@@ -345,6 +345,7 @@
       getRealData() {
         let params = {num: 1};
         getNodeOneDataForNum(params).then(res => {
+          this.msg = '当前 : '+util.formatDate.format(new Date(), 'yyyy-MM-dd hh:mm:ss');
           this.humidity = res.data.data.humidity;
           this.ground = res.data.data.ground;
           this.temperature = res.data.data.temperature;
@@ -392,6 +393,9 @@
           },
           series: [
             {
+              min : -44,
+              max : 44,
+              splitNumber:8,
               name: '当前温度',
               type: 'gauge',
               detail: {formatter: '{value}℃'},
@@ -415,6 +419,9 @@
           },
           series: [
             {
+              min : -44,
+              max : 44,
+              splitNumber:8,
               name: '当前温度',
               type: 'gauge',
               detail: {formatter: '{value}℃'},
@@ -438,6 +445,9 @@
           },
           series: [
             {
+              min:0,
+              max:14,
+              splitNumber:14,
               name: '当前PH值',
               type: 'gauge',
               detail: {formatter: '{value}'},
@@ -519,7 +529,7 @@
               type: 'value',
               scale: true,
               name: '',
-              max: 4,
+              max: 100,
               min: 0,
               boundaryGap: [0.2, 0.2]
             }
@@ -934,10 +944,7 @@
       this.getRealData();
       this.getDataFlow();
 
-      this.drawGaugeHumidity("gaugeHumidity");
-      this.drawGaugeGround("gaugeGround");
-      this.drawGaugeTemperature("gaugeTemperature");
-      this.drawGaugePh("gaugePh");
+
 
       this.drawLastLineChart("lastChartPic");
 
@@ -953,6 +960,11 @@
         this.drawDynamicGround("lineGround");
         this.drawDynamicTemperature("lineTemperature");
         this.drawDynamicPh("linePh");
+
+        this.drawGaugeHumidity("gaugeHumidity");
+        this.drawGaugeGround("gaugeGround");
+        this.drawGaugeTemperature("gaugeTemperature");
+        this.drawGaugePh("gaugePh");
       },2000)
 
     }

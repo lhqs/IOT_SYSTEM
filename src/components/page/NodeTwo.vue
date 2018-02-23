@@ -108,7 +108,7 @@
     name: "real-data",
     data() {
       return {
-        msg: '当前数据',
+        msg: '',
         sensorData: {
           ground: '',
           temperature: '',
@@ -145,8 +145,8 @@
     },
     watch: {
       ground: function () {
-        this.drawGaugeHumidity("gaugeHumidity");
-        this.drawGaugeGround("gaugeGround");
+        // this.drawGaugeHumidity("gaugeHumidity");
+        // this.drawGaugeGround("gaugeGround");
       }
       /*chartDatas: function () {
         this.drawLastLineChart("lastChartPic");
@@ -205,6 +205,7 @@
       getRealData() {
         let params = {num: 1};
         getNodeTwoDataForNum(params).then(res => {
+          this.msg = '当前:'+util.formatDate.format(new Date(), 'yyyy-MM-dd hh:mm:ss');
           this.humidity = res.data.data.humidity;
           this.ground = res.data.data.ground;
           this.temperature = res.data.data.temperature;
@@ -246,6 +247,9 @@
           },
           series: [
             {
+              min : -44,
+              max : 44,
+              splitNumber:16,
               name: '当前温度',
               type: 'gauge',
               detail: {formatter: '{value}℃'},
@@ -327,7 +331,7 @@
               type: 'value',
               scale: true,
               name: '',
-              max: 4,
+              max: 100,
               min: 0,
               boundaryGap: [0.2, 0.2]
             }
@@ -461,17 +465,15 @@
     },
     mounted() {
       this.getRealData();
-
-
-
-
-
-      this.$nextTick(function () {
+      /*this.$nextTick(function () {
         setInterval(this.getRealData, 4000);
-      })
+      })*/
     },
     created: function () {
       setTimeout(()=>{
+        this.drawGaugeHumidity("gaugeHumidity");
+        this.drawGaugeGround("gaugeGround");
+
         this.drawDynamicHumidity("lineHumidity");
         this.drawDynamicGround("lineGround");
       },2000)

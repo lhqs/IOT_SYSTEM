@@ -96,3 +96,8 @@ export const exportExcelForHumidityThree = params => { return axios.get(`${baseU
 export const exportExcelForGroundThree = params => { return axios.get(`${baseUrl}/exportExcelForGroundThree`,{params:params})};
 export const exportExcelForTemperatureThree = params => { return axios.get(`${baseUrl}/exportExcelForTemperatureThree`,{params:params})};
 export const exportExcelForPhThree = params => { return axios.get(`${baseUrl}/exportExcelForPhThree`,{params:params})};
+
+/*导出节点所有参数的数据*/
+export const exportExcelForPartOne = params => { return axios.get(`${baseUrl}/exportExcelForPartOne`,{params:params})};
+export const exportExcelForPartTwo = params => { return axios.get(`${baseUrl}/exportExcelForPartTwo`,{params:params})};
+export const exportExcelForPartThree = params => { return axios.get(`${baseUrl}/exportExcelForPartThree`,{params:params})};

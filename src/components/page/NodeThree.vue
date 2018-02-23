@@ -165,7 +165,7 @@
     name: "real-data",
     data() {
       return {
-        msg: '当前数据',
+        msg: '',
         sensorData: {
           ground: '',
           temperature: '',
@@ -211,10 +211,10 @@
     },
     watch: {
       ground: function () {
-        this.drawGaugeHumidity("gaugeHumidity");
-        this.drawGaugeGround("gaugeGround");
-        this.drawGaugeTemperature("gaugeTemperature");
-        this.drawGaugePh("gaugePh");
+        // this.drawGaugeHumidity("gaugeHumidity");
+        // this.drawGaugeGround("gaugeGround");
+        // this.drawGaugeTemperature("gaugeTemperature");
+        // this.drawGaugePh("gaugePh");
       }
 
     },
@@ -305,12 +305,11 @@
       }},
       updateData() {
         this.getRealData();
-
-
       },
       getRealData() {
         let params = {num: 1};
         getNodeThreeDataForNum(params).then(res => {
+          this.msg = '当前:'+util.formatDate.format(new Date(), 'yyyy-MM-dd hh:mm:ss');
           this.humidity = res.data.data.humidity;
           this.ground = res.data.data.ground;
           this.temperature = res.data.data.temperature;
@@ -358,6 +357,9 @@
           },
           series: [
             {
+              min : -44,
+              max : 44,
+              splitNumber:16,
               name: '当前温度',
               type: 'gauge',
               detail: {formatter: '{value}℃'},
@@ -381,6 +383,9 @@
           },
           series: [
             {
+              min : -44,
+              max : 44,
+              splitNumber:16,
               name: '当前温度',
               type: 'gauge',
               detail: {formatter: '{value}℃'},
@@ -404,6 +409,9 @@
           },
           series: [
             {
+              min:0,
+              max:14,
+              splitNumber:14,
               name: '当前PH值',
               type: 'gauge',
               detail: {formatter: '{value}'},
@@ -485,7 +493,7 @@
               type: 'value',
               scale: true,
               name: '',
-              max: 4,
+              max: 100,
               min: 0,
               boundaryGap: [0.2, 0.2]
             }
@@ -498,7 +506,6 @@
                 var res = [];
                 var len = 0;
                 while (len < 80) {
-                  // res.push((Math.random()*10 + 4).toFixed(1) - 0);
                   res.push(1.0);
                   len++;
                 }
@@ -814,18 +821,9 @@
     },
     mounted() {
       this.getRealData();
-
-
-
-      this.drawGaugeHumidity("gaugeHumidity");
-      this.drawGaugeGround("gaugeGround");
-      this.drawGaugeTemperature("gaugeTemperature");
-      this.drawGaugePh("gaugePh");
-
-
-      this.$nextTick(function () {
+      /*this.$nextTick(function () {
         setInterval(this.getRealData, 4000);
-      })
+      })*/
     },
     created: function () {
       setTimeout(()=>{
@@ -833,6 +831,11 @@
         this.drawDynamicGround("lineGround");
         this.drawDynamicTemperature("lineTemperature");
         this.drawDynamicPh("linePh");
+
+        this.drawGaugeHumidity("gaugeHumidity");
+        this.drawGaugeGround("gaugeGround");
+        this.drawGaugeTemperature("gaugeTemperature");
+        this.drawGaugePh("gaugePh");
       },2000);
     }
 

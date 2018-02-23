@@ -48,6 +48,8 @@ const NodeThree = ()  => import ('@/components/page/NodeThree');
 // import UploadFile from '@/components/test/UploadFile'
 const UploadFile = ()  => import ('@/components/test/UploadFile');
 
+const ExportNodedata = () => import('@/components/page/ExportNodedata');
+
 
 Vue.use(Router);
 
@@ -83,6 +85,7 @@ export default new Router({
 
         { path: '/layoutTest', component: LayoutTest, name: 'Test' },
         { path: '/uploadFile', component: UploadFile, name: 'upload_Test' },
+        { path: '/export', component: ExportNodedata, name: 'Export_Nodedata' }
       ]
     },
     {
