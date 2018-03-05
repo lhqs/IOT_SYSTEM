@@ -1,8 +1,14 @@
-# neauiot
+## 物联网管理系统前端
 
-> plant system for IOT platform
+* 用于显示接收传感器节点传输数据与管理用户权限，此外，也包含节点数据可视化，萤石摄像监控录像，数据导出至Excel，系统运行环境监测等必要功能；
+* 此项目基于Vue.js + Element UI + ECharts + axios + Nginx构建；
 
-## Build Setup
+## 关联项目
+
+* 物联完管理系统后台接口服务(https://github.com/lhqs/plant-rest):SpringMVC + Spring + MyBatis + MySql + RESTful + Tomcat + 七牛云对象存储；
+*	接收数据程序(https://github.com/lhqs/data_transmission)：基于UDP + Netty构建；
+
+## 项目构建
 
 ``` bash
 # install dependencies
@@ -18,12 +24,10 @@ npm run build
 npm run build --report
 ```
 
-For a detailed explanation on how things work, check out the [guide](http://vuejs-templates.github.io/webpack/) and [docs for vue-loader](http://vuejs.github.io/vue-loader).
 
-
-### 项目运行页面
+## 项目运行页面
 
 * 节点管理：
 ![](http://qiniu.lhqs1314.cn/msg_node.png)
-* 用户管理
+* 用户管理：
 ![](http://qiniu.lhqs1314.cn/msg_user.png)
